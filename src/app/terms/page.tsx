@@ -57,7 +57,7 @@ export default function TermsPage() {
               3. AI-Generated Content
             </h2>
             <p className="text-secondary text-sm leading-relaxed mb-3">
-              Partnership Profiles are generated using AI (Anthropic Claude).
+              Partnership Profiles are generated using AI (OpenAI GPT-4o).
               While we strive for accuracy and helpfulness, AI-generated content
               may contain errors, inaccuracies, or suggestions that are not
               appropriate for your specific situation.
@@ -163,8 +163,8 @@ export default function TermsPage() {
               7. Third-Party Services
             </h2>
             <p className="text-secondary text-sm leading-relaxed">
-              BRIDGE may recommend third-party AI services (such as Claude by
-              Anthropic or ChatGPT by OpenAI). Your use of those services is
+              BRIDGE may recommend third-party AI services (such as ChatGPT by
+              OpenAI or Claude by Anthropic). Your use of those services is
               governed by their respective terms and privacy policies. BRIDGE is
               not responsible for the availability, accuracy, or policies of
               third-party services.

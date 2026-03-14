@@ -78,8 +78,8 @@ export default function PrivacyPage() {
                 <span className="w-1.5 h-1.5 rounded-full bg-bridge-gold mt-2 flex-shrink-0" />
                 <p className="text-secondary text-sm leading-relaxed">
                   Your assessment data is used solely to generate your
-                  personalized Partnership Profile via our AI service (Anthropic
-                  Claude).
+                  personalized Partnership Profile via our AI service (OpenAI
+                  GPT-4o).
                 </p>
               </li>
               <li className="flex items-start gap-3">

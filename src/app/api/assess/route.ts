@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import Anthropic from '@anthropic-ai/sdk';
+import OpenAI from 'openai';
 import { demoProfile } from '@/lib/demo-profile';
 
 export async function POST(req: NextRequest) {
@@ -16,13 +16,13 @@ export async function POST(req: NextRequest) {
       weeklyHours,
     } = body;
 
-    const apiKey = process.env.ANTHROPIC_API_KEY;
+    const apiKey = process.env.OPENAI_API_KEY;
 
     if (!apiKey) {
       return NextResponse.json({ success: true, profile: demoProfile });
     }
 
-    const client = new Anthropic({ apiKey });
+    const client = new OpenAI({ apiKey });
 
     const userMessage = `
 PARTNERSHIP ASSESSMENT DATA
@@ -48,10 +48,13 @@ WEEKLY HOURS AVAILABLE: ${weeklyHours}
 Generate a deeply personal partnership profile for this human. Make the partnershipName creative and meaningful. Reference their specific dream throughout. The session plans should be concrete and actionable. The motivational message should feel like it was written just for them.
 `.trim();
 
-    const message = await client.messages.create({
-      model: 'claude-sonnet-4-20250514',
+    const completion = await client.chat.completions.create({
+      model: 'gpt-4o',
       max_tokens: 2000,
-      system: `You are BRIDGE, the Human-AI Partnership Engine. You generate deeply personal partnership profiles that help humans understand how to work with AI as a true creative partner.
+      messages: [
+        {
+          role: 'system',
+          content: `You are BRIDGE, the Human-AI Partnership Engine. You generate deeply personal partnership profiles that help humans understand how to work with AI as a true creative partner.
 
 Respond with ONLY valid JSON matching this exact structure (no markdown, no code fences, just raw JSON):
 
@@ -89,15 +92,17 @@ Respond with ONLY valid JSON matching this exact structure (no markdown, no code
 }
 
 Be honest in your assessment scores. Include creative, actionable session plans. The motivational message should feel like it was written by someone who truly understands their dream.`,
-      messages: [{ role: 'user', content: userMessage }],
+        },
+        { role: 'user', content: userMessage },
+      ],
     });
 
-    const textBlock = message.content.find((block) => block.type === 'text');
-    if (!textBlock || textBlock.type !== 'text') {
+    const responseText = completion.choices[0]?.message?.content || '';
+    if (!responseText) {
       return NextResponse.json({ success: true, profile: demoProfile });
     }
 
-    const cleaned = textBlock.text.trim().replace(/^```json?\s*/, '').replace(/```\s*$/, '');
+    const cleaned = responseText.trim().replace(/^```json?\s*/, '').replace(/```\s*$/, '');
     const profile = JSON.parse(cleaned);
 
     // Ensure score fields are numbers

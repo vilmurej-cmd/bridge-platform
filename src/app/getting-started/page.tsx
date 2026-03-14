@@ -30,7 +30,7 @@ const steps = [
       { label: 'Claude by Anthropic', href: 'https://claude.ai' },
       { label: 'ChatGPT by OpenAI', href: 'https://chatgpt.com' },
     ],
-    tip: 'Claude excels at long-form collaboration and nuanced thinking. ChatGPT is great for rapid iteration and code generation. Try both and see which feels like a better partner for your dream.',
+    tip: 'ChatGPT excels at rapid iteration and code generation. Claude is great for long-form collaboration and nuanced thinking. Try both and see which feels like a better partner for your dream.',
   },
   {
     number: 2,
