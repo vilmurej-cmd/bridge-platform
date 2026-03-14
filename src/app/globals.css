@@ -1,26 +1,305 @@
 @import "tailwindcss";
 
+/* ========================================
+   BRIDGE Design System — Custom Properties
+   ======================================== */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Gold — Human Elements */
+  --bridge-gold: #F59E0B;
+  --bridge-gold-light: #FCD34D;
+  --bridge-gold-dark: #D97706;
+  --bridge-gold-glow: 0 0 20px rgba(245, 158, 11, 0.3);
+
+  /* Violet — AI Elements */
+  --bridge-violet: #8B5CF6;
+  --bridge-violet-light: #A78BFA;
+  --bridge-violet-glow: 0 0 20px rgba(139, 92, 246, 0.3);
+
+  /* Accent Colors */
+  --bridge-rose: #FB7185;
+  --bridge-teal: #14B8A6;
+  --bridge-blue: #3B82F6;
+
+  /* Backgrounds */
+  --bg-cream: #FFFBF0;
+  --bg-warm-white: #FFF7ED;
+  --bg-card: #FFFFFF;
+  --bg-gold-soft: rgba(245, 158, 11, 0.08);
+  --bg-violet-soft: rgba(139, 92, 246, 0.08);
+
+  /* Text */
+  --text-primary: #1C1917;
+  --text-secondary: #57534E;
+  --text-muted: #A8A29E;
+
+  /* Borders */
+  --border: #E7E5E4;
+  --border-gold: rgba(245, 158, 11, 0.3);
+  --border-violet: rgba(139, 92, 246, 0.3);
 }
+
+/* ========================================
+   Tailwind v4 Theme Extension
+   ======================================== */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Fonts */
+  --font-sans: var(--font-jakarta), "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-playfair), "Playfair Display", ui-serif, Georgia, serif;
+
+  /* Bridge Colors */
+  --color-bridge-gold: var(--bridge-gold);
+  --color-bridge-gold-light: var(--bridge-gold-light);
+  --color-bridge-gold-dark: var(--bridge-gold-dark);
+  --color-bridge-violet: var(--bridge-violet);
+  --color-bridge-violet-light: var(--bridge-violet-light);
+  --color-bridge-rose: var(--bridge-rose);
+  --color-bridge-teal: var(--bridge-teal);
+  --color-bridge-blue: var(--bridge-blue);
+
+  /* Semantic Colors */
+  --color-cream: var(--bg-cream);
+  --color-warm-white: var(--bg-warm-white);
+  --color-card: var(--bg-card);
+  --color-gold-soft: var(--bg-gold-soft);
+  --color-violet-soft: var(--bg-violet-soft);
+  --color-primary: var(--text-primary);
+  --color-secondary: var(--text-secondary);
+  --color-muted: var(--text-muted);
+  --color-border: var(--border);
+  --color-border-gold: var(--border-gold);
+  --color-border-violet: var(--border-violet);
+
+  /* Animations */
+  --animate-fade-in-up: fadeInUp 0.6s ease-out both;
+  --animate-gentle-pulse: gentlePulse 3s ease-in-out infinite;
+  --animate-warm-glow: warmGlow 2s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ========================================
+   Base Styles
+   ======================================== */
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-cream);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+/* ========================================
+   Utility Classes
+   ======================================== */
+
+.gold-glow {
+  box-shadow: var(--bridge-gold-glow);
+}
+
+.violet-glow {
+  box-shadow: var(--bridge-violet-glow);
+}
+
+.bg-gold-soft {
+  background-color: var(--bg-gold-soft);
+}
+
+.bg-violet-soft {
+  background-color: var(--bg-violet-soft);
+}
+
+.border-gold {
+  border-color: var(--border-gold);
+}
+
+.border-violet {
+  border-color: var(--border-violet);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, var(--bridge-gold), var(--bridge-gold-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-violet {
+  background: linear-gradient(135deg, var(--bridge-violet), var(--bridge-violet-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-partnership {
+  background: linear-gradient(135deg, var(--bridge-gold), var(--bridge-violet));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ========================================
+   Keyframe Animations
+   ======================================== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gentlePulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes warmGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(245, 158, 11, 0.4);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ========================================
+   Scrollbar Styling
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ========================================
+   Selection
+   ======================================== */
+
+::selection {
+  background-color: rgba(245, 158, 11, 0.2);
+  color: var(--text-primary);
+}
+
+/* ========================================
+   Focus Styles
+   ======================================== */
+
+:focus-visible {
+  outline: 2px solid var(--bridge-gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ========================================
+   Print Styles
+   ======================================== */
+
+@media print {
+  nav,
+  footer {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+
+  a {
+    text-decoration: underline;
+    color: black !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* ========================================
+   Reduced Motion
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ========================================
+   High Contrast
+   ======================================== */
+
+@media (forced-colors: active) {
+  :root {
+    --bridge-gold: CanvasText;
+    --bridge-violet: LinkText;
+    --bg-cream: Canvas;
+    --bg-warm-white: Canvas;
+    --bg-card: Canvas;
+    --text-primary: CanvasText;
+    --text-secondary: CanvasText;
+    --text-muted: GrayText;
+    --border: CanvasText;
+  }
+
+  .gold-glow,
+  .violet-glow {
+    box-shadow: none;
+  }
+
+  .text-gradient-gold,
+  .text-gradient-violet,
+  .text-gradient-partnership {
+    background: none;
+    -webkit-text-fill-color: CanvasText;
+  }
 }
