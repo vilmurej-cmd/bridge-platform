@@ -4,15 +4,18 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
+import UniversalLanguageSelector from '@/components/UniversalLanguageSelector';
+import { useLanguage } from '@/lib/language-context';
 
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/how-it-works', label: 'How It Works' },
-  { href: '/stories', label: 'Stories' },
+  { href: '/', labelKey: 'nav.home', fallback: 'Home' },
+  { href: '/how-it-works', labelKey: 'nav.howItWorks', fallback: 'How It Works' },
+  { href: '/stories', labelKey: 'nav.stories', fallback: 'Stories' },
 ];
 
 export default function Navigation() {
   const pathname = usePathname();
+  const { t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -56,18 +59,19 @@ export default function Navigation() {
                       : 'text-secondary hover:text-bridge-gold'
                   }`}
                 >
-                  {link.label}
+                  {t(link.labelKey)}
                   {isActive && (
                     <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-bridge-gold rounded-full" />
                   )}
                 </Link>
               );
             })}
+            <UniversalLanguageSelector />
             <Link
               href="/assess"
               className="inline-flex items-center px-5 py-2 text-sm font-semibold text-white bg-bridge-gold hover:bg-bridge-gold-dark rounded-full transition-all duration-200 shadow-sm hover:shadow-md"
             >
-              Start Building
+              {t('nav.assess')}
             </Link>
           </div>
 
@@ -99,15 +103,18 @@ export default function Navigation() {
                       : 'text-secondary hover:text-bridge-gold hover:bg-gold-soft'
                   }`}
                 >
-                  {link.label}
+                  {t(link.labelKey)}
                 </Link>
               );
             })}
+            <div className="px-4 py-2">
+              <UniversalLanguageSelector />
+            </div>
             <Link
               href="/assess"
               className="block mx-4 mt-3 text-center px-5 py-3 text-sm font-semibold text-white bg-bridge-gold hover:bg-bridge-gold-dark rounded-full transition-all duration-200"
             >
-              Start Building
+              {t('nav.assess')}
             </Link>
           </div>
         </div>

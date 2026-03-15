@@ -1,0 +1,53 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "assess": "Encuentra tu Socio",
+    "stories": "Historias",
+    "howItWorks": "Como Funciona",
+    "gettingStarted": "Comenzar",
+    "about": "Acerca de"
+  },
+  "hero": {
+    "title": "Tu Sueno Merece un Socio",
+    "subtitle": "BRIDGE conecta a personas e inteligencia artificial en alianzas que construyen lo que el mundo nunca ha visto.",
+    "cta": "Encuentra tu Socio",
+    "secondary": "Descubre Como Funciona"
+  },
+  "assess": {
+    "step1": "Que quieres construir?",
+    "step1Hint": "No hay respuestas incorrectas. Todo lo grande comenzo como un sueno.",
+    "step2": "Que aportas tu?",
+    "step2Hint": "Selecciona todo lo que sientas verdadero.",
+    "step3": "Como trabajas mejor?",
+    "step4": "Que tan serio es este sueno?",
+    "generateProfile": "Generar Mi Perfil de Alianza"
+  },
+  "strengths": {
+    "vision": "Vision y Estrategia",
+    "communication": "Comunicacion",
+    "domain": "Experiencia en el Area",
+    "design": "Sentido del Diseno",
+    "technical": "Habilidades Tecnicas",
+    "data": "Datos y Analisis",
+    "relationships": "Relaciones",
+    "execution": "Ejecucion"
+  },
+  "common": {
+    "loading": "Construyendo tu perfil...",
+    "share": "Compartir",
+    "save": "Guardar",
+    "close": "Cerrar",
+    "back": "Atras",
+    "next": "Siguiente"
+  },
+  "footer": {
+    "mission": "La calidad de lo que una IA construye es directamente proporcional a la calidad de la relacion humana que la respalda.",
+    "company": "Una empresa de Vilmure Ventures"
+  },
+  "language": {
+    "searchLanguages": "Buscar idiomas...",
+    "recentlyUsed": "Usados Recientemente",
+    "popular": "Idiomas Populares",
+    "allLanguages": "Todos los Idiomas"
+  }
+}

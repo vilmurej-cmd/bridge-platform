@@ -1,0 +1,53 @@
+{
+  "nav": {
+    "home": "Home",
+    "assess": "Find Your Partner",
+    "stories": "Stories",
+    "howItWorks": "How It Works",
+    "gettingStarted": "Getting Started",
+    "about": "About"
+  },
+  "hero": {
+    "title": "Your Dream Deserves a Partner",
+    "subtitle": "BRIDGE matches humans and AI into partnerships that build things the world has never seen.",
+    "cta": "Find Your Partner",
+    "secondary": "See How It Works"
+  },
+  "assess": {
+    "step1": "What do you want to build?",
+    "step1Hint": "There are no wrong answers. Every great thing started as a dream.",
+    "step2": "What do you bring to the table?",
+    "step2Hint": "Select everything that feels true.",
+    "step3": "How do you work best?",
+    "step4": "How serious is this dream?",
+    "generateProfile": "Generate My Partnership Profile"
+  },
+  "strengths": {
+    "vision": "Vision & Strategy",
+    "communication": "Communication",
+    "domain": "Domain Expertise",
+    "design": "Design Sense",
+    "technical": "Technical Skills",
+    "data": "Data & Analysis",
+    "relationships": "Relationships",
+    "execution": "Execution"
+  },
+  "common": {
+    "loading": "Building your profile...",
+    "share": "Share",
+    "save": "Save",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next"
+  },
+  "footer": {
+    "mission": "The quality of what an AI builds is directly proportional to the quality of the human relationship behind it.",
+    "company": "A Vilmure Ventures Company"
+  },
+  "language": {
+    "searchLanguages": "Search languages...",
+    "recentlyUsed": "Recently Used",
+    "popular": "Popular Languages",
+    "allLanguages": "All Languages"
+  }
+}
