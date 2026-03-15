@@ -19,10 +19,8 @@ export async function POST(req: NextRequest) {
 
     const apiKey = process.env.OPENAI_API_KEY;
     if (!apiKey) {
-      return NextResponse.json(
-        { error: 'Translation service unavailable' },
-        { status: 503 }
-      );
+      // Graceful degradation — return original text
+      return NextResponse.json({ translated: text });
     }
 
     const openai = new OpenAI({ apiKey });
@@ -47,9 +45,12 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ translated });
   } catch (error) {
     console.error('Translation error:', error);
-    return NextResponse.json(
-      { error: 'Translation failed' },
-      { status: 500 }
-    );
+    // Graceful degradation — return original text
+    try {
+      const body = await req.clone().json();
+      return NextResponse.json({ translated: body.text || '' });
+    } catch {
+      return NextResponse.json({ error: 'Translation failed' }, { status: 500 });
+    }
   }
 }
