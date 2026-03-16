@@ -1,5 +1,8 @@
 'use client';
 
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
+
 const milestones = [
   {
     session: 'Session 1',
@@ -18,6 +21,34 @@ const milestones = [
     label: '11 products, 35 AI tools, $0 VC',
   },
 ];
+
+function AnimatedNode({ index }: { index: number }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, margin: '-50px' });
+
+  return (
+    <motion.div
+      ref={ref}
+      className="w-3 h-3 rounded-full bg-bridge-gold z-10"
+      animate={isInView ? {
+        boxShadow: [
+          '0 0 0 4px rgba(245,158,11,0.15)',
+          '0 0 0 8px rgba(245,158,11,0.1)',
+          '0 0 0 4px rgba(245,158,11,0.15)',
+        ],
+        scale: [1, 1.2, 1],
+      } : {
+        boxShadow: '0 0 0 4px rgba(245,158,11,0.15)',
+        scale: 1,
+      }}
+      transition={{
+        duration: 2,
+        repeat: isInView ? Infinity : 0,
+        delay: index * 0.2,
+      }}
+    />
+  );
+}
 
 export default function ProofTimeline() {
   return (
@@ -45,7 +76,6 @@ export default function ProofTimeline() {
                     isAbove ? '' : 'pt-14'
                   }`}
                 >
-                  {/* Label above */}
                   {isAbove && (
                     <div className="text-center mb-4">
                       <p className="font-serif font-semibold text-primary text-sm">
@@ -57,10 +87,8 @@ export default function ProofTimeline() {
                     </div>
                   )}
 
-                  {/* Node */}
-                  <div className="w-3 h-3 rounded-full bg-bridge-gold ring-4 ring-bridge-gold/20 z-10" />
+                  <AnimatedNode index={i} />
 
-                  {/* Label below */}
                   {!isAbove && (
                     <div className="text-center mt-4">
                       <p className="font-serif font-semibold text-primary text-sm">
@@ -79,14 +107,21 @@ export default function ProofTimeline() {
 
         {/* Mobile: vertical timeline */}
         <div className="md:hidden relative pl-8">
-          {/* Vertical gold line */}
           <div className="absolute left-3 top-0 bottom-0 w-0.5 bg-gradient-to-b from-bridge-gold/20 via-bridge-gold to-bridge-gold/20" />
 
           <div className="space-y-10">
-            {milestones.map((m) => (
-              <div key={m.session} className="relative">
-                {/* Node */}
-                <div className="absolute -left-[22.5px] top-1 w-3 h-3 rounded-full bg-bridge-gold ring-4 ring-bridge-gold/20" />
+            {milestones.map((m, i) => (
+              <motion.div
+                key={m.session}
+                className="relative"
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <div className="absolute -left-[22.5px] top-1">
+                  <AnimatedNode index={i} />
+                </div>
 
                 <p className="font-serif font-semibold text-primary text-sm">
                   {m.session}
@@ -94,12 +129,11 @@ export default function ProofTimeline() {
                 <p className="text-secondary text-sm mt-1 leading-relaxed">
                   {m.label}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
 
-        {/* Quote */}
         <blockquote className="text-center mt-16">
           <p className="font-serif italic text-lg md:text-xl text-secondary max-w-2xl mx-auto">
             &ldquo;This wasn&apos;t built by a prompt engineer. It was built by

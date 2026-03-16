@@ -1,3 +1,6 @@
+'use client';
+
+import Link from 'next/link';
 import {
   GraduationCap,
   Heart,
@@ -15,6 +18,7 @@ const personas = [
       'You see a classroom full of students who deserve better tools. An app, a platform, a new way to learn \u2014 and you know exactly what they need.',
     color: 'text-bridge-gold',
     bg: 'bg-gold-soft',
+    prefill: 'I want to build a learning platform that helps my students...',
   },
   {
     icon: Heart,
@@ -23,6 +27,7 @@ const personas = [
       'You work in healthcare and see the gaps every day. A patient portal, a wellness tracker, a communication tool that actually works for real people.',
     color: 'text-bridge-rose',
     bg: 'bg-pink-50',
+    prefill: 'I want to build a healthcare tool that helps patients...',
   },
   {
     icon: Music,
@@ -31,6 +36,7 @@ const personas = [
       'You make things \u2014 music, art, stories, experiences. You have an idea for a platform that would change how people discover and share creative work.',
     color: 'text-bridge-violet',
     bg: 'bg-violet-soft',
+    prefill: 'I want to create a platform for sharing creative work...',
   },
   {
     icon: Rocket,
@@ -39,6 +45,7 @@ const personas = [
       'You have a startup idea burning a hole in your notebook. You know the market, you know the problem \u2014 you just need a technical partner who gets it.',
     color: 'text-bridge-gold-dark',
     bg: 'bg-amber-50',
+    prefill: 'I have a startup idea that solves...',
   },
   {
     icon: Microscope,
@@ -47,6 +54,7 @@ const personas = [
       'You have data, hypotheses, and breakthroughs waiting to happen. You need a partner who can build the tools to analyze, visualize, and share your work.',
     color: 'text-bridge-teal',
     bg: 'bg-teal-50',
+    prefill: 'I need to build research tools that help me analyze...',
   },
   {
     icon: Globe,
@@ -55,6 +63,7 @@ const personas = [
       'You\u2019re 16. You\u2019re in Lagos, or Lima, or Louisville. You have an idea that could help your community \u2014 and nobody has told you it\u2019s possible yet.',
     color: 'text-bridge-blue',
     bg: 'bg-blue-50',
+    prefill: 'I want to build something that helps my community...',
   },
 ];
 
@@ -75,7 +84,7 @@ export default function PersonaGrid() {
             return (
               <div
                 key={persona.name}
-                className="bg-white rounded-2xl p-6 border border-border hover:border-bridge-gold/40 hover:shadow-md transition-all duration-300 group"
+                className="bg-white rounded-2xl p-6 border border-border hover:border-bridge-gold/40 hover:shadow-md transition-all duration-300 group flex flex-col"
               >
                 <div
                   className={`w-12 h-12 rounded-xl ${persona.bg} flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-300`}
@@ -85,9 +94,16 @@ export default function PersonaGrid() {
                 <h3 className="font-serif text-lg font-semibold text-primary mb-2">
                   {persona.name}
                 </h3>
-                <p className="text-secondary text-sm leading-relaxed">
+                <p className="text-secondary text-sm leading-relaxed flex-1">
                   {persona.description}
                 </p>
+                <Link
+                  href={`/assess?dream=${encodeURIComponent(persona.prefill)}`}
+                  className="mt-4 inline-flex items-center text-sm font-medium text-bridge-gold hover:text-bridge-gold-dark transition-colors group-hover:translate-x-1 duration-200"
+                >
+                  Start Your Journey
+                  <span className="ml-1">&rarr;</span>
+                </Link>
               </div>
             );
           })}

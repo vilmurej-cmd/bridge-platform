@@ -48,15 +48,17 @@ export default function Home() {
             Take the partnership assessment and discover the AI collaborator
             your dream deserves.
           </p>
-          <Link
-            href="/assess"
-            className="inline-flex items-center px-10 py-5 text-lg font-semibold text-white bg-bridge-gold hover:bg-bridge-gold-dark rounded-full transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
-          >
-            Take the Partnership Assessment
-            <span className="ml-2" aria-hidden="true">
-              &rarr;
-            </span>
-          </Link>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/assess"
+              className="inline-flex items-center px-10 py-5 text-lg font-semibold text-white bg-bridge-gold hover:bg-bridge-gold-dark rounded-full transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+            >
+              Take the Partnership Assessment
+              <span className="ml-2" aria-hidden="true">
+                &rarr;
+              </span>
+            </Link>
+          </div>
           <p className="mt-6 text-sm text-muted">
             3 minutes. No account needed. Completely free.
           </p>

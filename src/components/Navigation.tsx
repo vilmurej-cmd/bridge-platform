@@ -11,6 +11,7 @@ const navLinks = [
   { href: '/', labelKey: 'nav.home', fallback: 'Home' },
   { href: '/how-it-works', labelKey: 'nav.howItWorks', fallback: 'How It Works' },
   { href: '/stories', labelKey: 'nav.stories', fallback: 'Stories' },
+  { href: '/workspace', labelKey: 'nav.workspace', fallback: 'Workspace' },
 ];
 
 export default function Navigation() {

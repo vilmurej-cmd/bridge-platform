@@ -193,6 +193,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ========================================
+   Workspace Utilities
+   ======================================== */
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.perspective-\[1000px\] {
+  perspective: 1000px;
+}
+
+/* ========================================
    Scrollbar Styling
    ======================================== */
 
